@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "jquery": "^3.1.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "babel-preset-latest": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
+    "node-sass": "^4.5.3",
+    "npm-run-all": "^4.0.1",
+    "postcss-cli": "^4.1.0",
+    "uglify-js": "^3.0.15"
+  },
+  "scripts": {
+    "build-p": "npm-run-all -pnl build:**",
+    "build-s": "npm-run-all -snl build:**",
+    "build:css": "node-sass in.scss | postcss --use autoprefixer -o out.css",
+    "build:js": "browserify in.js -o out.js -t [ babelify --presets [ latest ] ]",
+    "build:min:css": "node-sass in.scss --output-style compressed | postcss --use autoprefixer -o out.min.css",
+    "build:min:js": "browserify in.js -t [ babelify --presets [ latest ] ] | uglifyjs -c > out.min.js"
+  }
+}
